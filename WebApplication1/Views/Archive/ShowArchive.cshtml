@@ -1,0 +1,142 @@
+﻿@model WebApplication1.Models.WeatherViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<style>
+    .container {
+        margin-left: -0.7vh;   
+    }
+    td, th {
+        font-size: small;
+        padding-right: 5vh;
+    }
+    
+    form {
+        margin-bottom: 15px;
+    }
+    
+</style>
+
+<form>
+    <div class="form-row align-items-end">
+        <div class="col-md-3">
+            <label class="form-label" for="select-years">Years</label>
+            <select id="select-years" name="years" asp-items="Model.Years" class="selectpicker" multiple></select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label" for="select-months">Moths</label>
+            <select id="select-months" name="months" asp-items="Model.Months" class="selectpicker" multiple></select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].Date.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].Month)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].Date.TimeOfDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].Temperature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].AirHumidity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].DewPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].Pressure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].DirectionOfTheWind)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].WindSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].Cloudiness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].CloudBase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].HorizontalVisibility)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeatherList[0].WeatherConditions)
+        </th>
+    </tr>
+    
+    @foreach (var weatherItem in @Model.WeatherList)
+    {
+        var date = weatherItem.Date.ToShortDateString();
+        var time = weatherItem.Date.ToShortTimeString();
+        var year = weatherItem.Date.Year.ToString();
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.Month)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.Temperature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.AirHumidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.DewPoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.Pressure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.DirectionOfTheWind)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.WindSpeed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.Cloudiness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.CloudBase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.HorizontalVisibility)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => weatherItem.WeatherConditions)
+            </td>
+        </tr>
+    }
+</table>

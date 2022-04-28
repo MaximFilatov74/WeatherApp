@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+<style>
+    .container {
+        margin-left: -0.7vh;
+    }
+</style>
+
+<div class="align-content-start">
+    @using (Html.BeginForm("Import", "Files", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-excel" }))
+    {
+        <div>
+            Import excel file:
+            <input multiple type="file" name="excelFiles" id="fileExcel" />
+            <div>
+                <input type="submit" value="Import"/>
+            </div>
+        </div>
+    }    
+</div>

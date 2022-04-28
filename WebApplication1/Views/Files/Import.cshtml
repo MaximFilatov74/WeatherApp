@@ -1,0 +1,125 @@
+﻿@model WeatherViewModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+
+<style>
+    .container {
+        margin-left: -0.7vh;   
+    }
+    td, th {
+        font-size: small;
+        padding-right: 5vh;
+    }
+</style>
+
+@if (Model.WeatherList.Count > 0)
+{
+    <h2>Successfully imported!</h2>
+    <table class="table table-striped table-bordered">
+        @foreach (var weatherYear in @Model.WeatherList)
+        {
+            var date = weatherYear.Date.ToShortDateString();
+            var time = weatherYear.Date.ToShortTimeString();
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.Month)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.FileName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.Date.TimeOfDay)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.Temperature)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.AirHumidity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.DewPoint)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.Pressure)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.DirectionOfTheWind)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.WindSpeed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.Cloudiness)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.CloudBase)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.HorizontalVisibility)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => weatherYear.WeatherConditions)
+                </th>
+            
+            </tr>
+                
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.Month)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.FileName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.Temperature)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.AirHumidity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.DewPoint)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.Pressure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.DirectionOfTheWind)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.WindSpeed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.Cloudiness)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.CloudBase)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.HorizontalVisibility)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => weatherYear.WeatherConditions)
+                </td>
+            
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h2>
+        Error, model is invalid
+    </h2>
+}
